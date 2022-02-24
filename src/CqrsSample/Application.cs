@@ -21,8 +21,9 @@ namespace CqrsSample
         private static ContainerBuilder AddDbContext(ContainerBuilder builder)
         {
             _ = builder
-                .RegisterType<DbContext>()
-                .AsSelf().InstancePerLifetimeScope();
+                    .RegisterType<DbContext>()
+                    .AsSelf()
+                    .InstancePerLifetimeScope();
             return builder;
         }
 
@@ -37,15 +38,15 @@ namespace CqrsSample
         private static ContainerBuilder AddQueries(ContainerBuilder builder)
         {
             _ = builder
-                .RegisterType<QueryProcessor>()
-                .As<IQueryProcessor>()
-                .InstancePerLifetimeScope();
+                    .RegisterType<QueryProcessor>()
+                    .As<IQueryProcessor>()
+                    .InstancePerLifetimeScope();
 
             _ = builder
-               .RegisterAssemblyTypes(typeof(Program).Assembly)
-               .AsClosedTypesOf(typeof(IQueryHandler<,>), "1")
-               .AsImplementedInterfaces()
-               .InstancePerLifetimeScope();
+                    .RegisterAssemblyTypes(typeof(Program).Assembly)
+                    .AsClosedTypesOf(typeof(IQueryHandler<,>), "1")
+                    .AsImplementedInterfaces()
+                    .InstancePerLifetimeScope();
 
             return builder;
         }
@@ -54,31 +55,31 @@ namespace CqrsSample
         {
             var assembly = typeof(Program).Assembly;
             _ = builder
-               .RegisterType<CommandProcessor>()
-               .As<ICommandProcessor>()
-               .InstancePerLifetimeScope();
+                    .RegisterType<CommandProcessor>()
+                    .As<ICommandProcessor>()
+                    .InstancePerLifetimeScope();
 
             _ = builder
-               .RegisterAssemblyTypes(assembly)
-               .AsClosedTypesOf(typeof(ICommandHandler<,>), "1")
-               .AsImplementedInterfaces()
-               .InstancePerLifetimeScope();
+                    .RegisterAssemblyTypes(assembly)
+                    .AsClosedTypesOf(typeof(ICommandHandler<,>), "1")
+                    .AsImplementedInterfaces()
+                    .InstancePerLifetimeScope();
 
             _ = builder
-               .RegisterAssemblyTypes(assembly)
-               .AssignableTo<ICommandResult>()
-               .AsImplementedInterfaces()
-               .InstancePerRequest();
+                    .RegisterAssemblyTypes(assembly)
+                    .AssignableTo<ICommandResult>()
+                    .AsImplementedInterfaces()
+                    .InstancePerRequest();
 
             _ = builder
-               .RegisterAssemblyTypes(assembly)
-               .AsClosedTypesOf(typeof(ICommandValidator<>))
-               .AsImplementedInterfaces()
-               .InstancePerLifetimeScope();
+                    .RegisterAssemblyTypes(assembly)
+                    .AsClosedTypesOf(typeof(ICommandValidator<>))
+                    .AsImplementedInterfaces()
+                    .InstancePerLifetimeScope();
 
             _ = builder
-               .RegisterGenericDecorator(typeof(ValidationCommandHandlerDecorator<,>), typeof(ICommandHandler<,>), "1", "2")
-               .InstancePerLifetimeScope();
+                    .RegisterGenericDecorator(typeof(ValidationCommandHandlerDecorator<,>), typeof(ICommandHandler<,>), "1", "2")
+                    .InstancePerLifetimeScope();
 
             return builder;
         }

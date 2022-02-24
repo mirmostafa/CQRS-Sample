@@ -11,7 +11,7 @@ namespace CqrsSample
         private static void Main()
         {
             Application.Init();
-            (var queryProcessor, var commandProcessor) = Application.GetProcessors(); // 🤔 It is initializing processors. What about the next time usage? Initializing every single time?
+            (var queryProcessor, var commandProcessor) = Application.GetProcessors(); //!? 🤔 It is initializing processors. What about the next time usage? Initializing every single time? No. It can be given by DI
 
             var resultCommand = SampleCommand(commandProcessor);
 
