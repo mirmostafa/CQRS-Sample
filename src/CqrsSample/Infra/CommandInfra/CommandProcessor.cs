@@ -1,5 +1,5 @@
-﻿using System.Threading.Tasks;
-using Autofac;
+﻿using Autofac;
+using System.Threading.Tasks;
 
 namespace CqrsSample.Infra
 {

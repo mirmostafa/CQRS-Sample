@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CqrsSample.Infra;
+using System;
 using System.Threading.Tasks;
-using CqrsSample.Infra;
 
 namespace CqrsSample.Sample.UserEntity.Command
 {
@@ -9,6 +9,7 @@ namespace CqrsSample.Sample.UserEntity.Command
         private readonly DbContext dbContext;
 
         public CreateUserCommandHandler(DbContext dbContext) => this.dbContext = dbContext;
+
         public Task<CommandResult<CreateUserCommandResult>> HandleAsync(CreateUserCommand command)
         {
             var entity = new User

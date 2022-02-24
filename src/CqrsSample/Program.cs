@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using CqrsSample.Infra;
+﻿using CqrsSample.Infra;
 using CqrsSample.Sample.UserEntity.Command;
 using CqrsSample.Sample.UserEntity.Query;
+using System;
+using System.Threading.Tasks;
 
 namespace CqrsSample
 {
@@ -21,7 +21,7 @@ namespace CqrsSample
 
             var resultQuery = SampleQuery(queryProcessor, resultCommand.Result.Id);
 
-            Console.WriteLine($"{resultQuery.Result.FirstName} {resultQuery.Result.LastName}" );
+            Console.WriteLine($"{resultQuery.Result.FirstName} {resultQuery.Result.LastName}");
         }
 
         private static CommandResult<CreateUserCommandResult> SampleCommand(ICommandProcessor commandProcessor)

@@ -9,7 +9,9 @@ namespace CqrsSample.Infra
                     : base(status) => this.Result = result;
 
         public static Task<CommandResult<T>> SuccessTask(T item) => Task.FromResult(Success(item));
+
         public static CommandResult<T> Success(T item) => new CommandResult<T>(true, item);
+
         public static new CommandResult<T> Empty() => new CommandResult<T>(true, default);
 
         public static async Task<CommandResult<int>> FromDb(Task<int> saveResult)

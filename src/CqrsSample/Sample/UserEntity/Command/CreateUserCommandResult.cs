@@ -1,5 +1,5 @@
-﻿using System;
-using CqrsSample.Infra;
+﻿using CqrsSample.Infra;
+using System;
 
 namespace CqrsSample.Sample.UserEntity.Command
 {

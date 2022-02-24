@@ -1,6 +1,6 @@
-﻿using System.Linq;
+﻿using CqrsSample.Infra;
+using System.Linq;
 using System.Threading.Tasks;
-using CqrsSample.Infra;
 
 namespace CqrsSample.Sample.UserEntity.Query
 {

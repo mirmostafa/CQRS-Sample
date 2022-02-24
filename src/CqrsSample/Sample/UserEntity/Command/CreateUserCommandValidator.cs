@@ -1,6 +1,6 @@
-﻿using System;
+﻿using CqrsSample.Infra;
+using System;
 using System.Threading.Tasks;
-using CqrsSample.Infra;
 
 namespace CqrsSample.Sample.UserEntity.Command
 {
